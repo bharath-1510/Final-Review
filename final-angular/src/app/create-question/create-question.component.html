@@ -1,0 +1,101 @@
+<section class="form">
+  <mat-card>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          rows="3"
+          placeholder="Description"
+          [(ngModel)]="description"
+        ></textarea>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Weightage</mat-label>
+        <input
+          type="number"
+          matInput
+          placeholder="Weightage"
+          [(ngModel)]="weightage"
+        />
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Compilation TimeOut</mat-label>
+        <input
+          type="number"
+          matInput
+          placeholder="Compilation TimeOut in ms"
+          [(ngModel)]="compilationTimeout"
+        />
+      </mat-form-field>
+    </p>
+    <div class="language-section">
+      <div class="checkbox-container" *ngFor="let language of languages">
+        <input
+          type="checkbox"
+          class="styled-checkbox"
+          (change)="onSelect(language)"
+        />
+        <label for="myCheckbox" class="checkbox-label">{{ language }}</label>
+      </div>
+    </div>
+    <div class="template-section">
+      <textarea
+        *ngFor="let lang of displayTextArea | keyvalue"
+        [hidden]="!lang.value"
+        [(ngModel)]="template[lang.key]"
+        rows="15"
+      >
+      </textarea>
+    </div>
+    <p [hidden]="hideField">
+      <mat-form-field appearance="fill">
+        <mat-label>TestCase Count</mat-label>
+        <input
+          matInput
+          type="number"
+          min="1"
+          [(ngModel)]="testCaseCount"
+          (change)="generateTestCases()"
+        />
+      </mat-form-field>
+    </p>
+    <div
+      *ngFor="let testCase of testCases; let i = index"
+      class="testcase-section"
+    >
+      <textarea
+        [(ngModel)]="testCase.input"
+        placeholder="Input {{ i + 1 }}"
+        rows="10"
+      ></textarea>
+      <textarea
+        [(ngModel)]="testCase.output"
+        placeholder="Output {{ i + 1 }}"
+        rows="10"
+      ></textarea>
+    </div>
+    <div class="button-group">
+      <button
+        mat-raised-button
+        color="primary"
+        class="button-footer"
+        (click)="onSubmit()"
+      >
+        Save Question
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        class="button-footer"
+        routerLink="/view-question"
+      >
+        Back
+      </button>
+    </div>
+  </mat-card>
+</section>

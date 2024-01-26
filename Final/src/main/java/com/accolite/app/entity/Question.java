@@ -19,8 +19,6 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(unique = true)
-    private String title;
     @Column(columnDefinition = "LONGTEXT")
     private String description;
     private Integer weightage;
@@ -33,7 +31,7 @@ public class Question {
     @JsonIgnore
     private List<Template> templates;
 
-    @ManyToMany(mappedBy = "candidates")
-    List<Candidate> tests = new ArrayList<>();
+    @ManyToMany(mappedBy = "questions")
+    List<Candidate> candidates = new ArrayList<>();
 
 }

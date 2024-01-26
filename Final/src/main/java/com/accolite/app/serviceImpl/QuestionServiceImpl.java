@@ -1,0 +1,33 @@
+package com.accolite.app.serviceImpl;
+
+import com.accolite.app.converter.ConverterService;
+import com.accolite.app.dto.QuestionDTO;
+import com.accolite.app.entity.Question;
+import com.accolite.app.exception.ApiRequestException;
+import com.accolite.app.repository.QuestionRepository;
+import com.accolite.app.service.QuestionService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
+public class QuestionServiceImpl implements QuestionService {
+    private final ConverterService converterService;
+    @Autowired
+    QuestionRepository questionRepository;
+    @Override
+    public String saveQuestion(QuestionDTO questionDTO) {
+        try {
+            Question question = questionRepository.save(converterService.convertQuestionToEntity(questionDTO));
+            question.setTemplates(converterService.convertTemplatesToEntity(questionDTO.getTemplates(),question));
+            question.setTestCases(converterService.convertTestcasesToEntity(questionDTO.getTestcases(),question));
+            questionRepository.save(question);
+            return "Question Saved";
+        }
+        catch (Exception e){
+            throw new ApiRequestException(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+}
