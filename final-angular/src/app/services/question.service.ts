@@ -19,4 +19,7 @@ export class QuestionService {
       options
     );
   }
+  getQuestion(): Observable<Question[]> {
+    return this.http.get<Question[]>(`${this.apiQuestion}/all`);
+  }
 }

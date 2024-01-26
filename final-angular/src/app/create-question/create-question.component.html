@@ -8,6 +8,7 @@
           rows="3"
           placeholder="Description"
           [(ngModel)]="description"
+          required
         ></textarea>
       </mat-form-field>
     </p>
@@ -16,9 +17,11 @@
         <mat-label>Weightage</mat-label>
         <input
           type="number"
+          min="0"
           matInput
           placeholder="Weightage"
           [(ngModel)]="weightage"
+          required
         />
       </mat-form-field>
     </p>
@@ -27,9 +30,11 @@
         <mat-label>Compilation TimeOut</mat-label>
         <input
           type="number"
+          min="0"
           matInput
           placeholder="Compilation TimeOut in ms"
           [(ngModel)]="compilationTimeout"
+          required
         />
       </mat-form-field>
     </p>

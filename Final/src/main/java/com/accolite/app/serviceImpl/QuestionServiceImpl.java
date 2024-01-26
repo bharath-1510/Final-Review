@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class QuestionServiceImpl implements QuestionService {
@@ -29,5 +32,17 @@ public class QuestionServiceImpl implements QuestionService {
         catch (Exception e){
             throw new ApiRequestException(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @Override
+    public List<QuestionDTO> getQuestions() {
+        List<Question> questions = questionRepository.findAll();
+        List<QuestionDTO> list = new ArrayList<>();
+        questions.forEach(
+                (x) -> {
+                    list.add(converterService.convertQuestionToDTO(x));
+                }
+        );
+        return list;
     }
 }
