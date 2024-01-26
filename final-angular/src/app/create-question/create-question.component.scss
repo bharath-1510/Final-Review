@@ -1,0 +1,79 @@
+@import "../app.component.scss";
+.form {
+  margin-left: 30px;
+  display: flex;
+  padding: 10px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  p {
+    margin-left: 15px;
+    margin-top: 10px;
+    mat-form-field {
+      width: 100%;
+    }
+  }
+  .button-footer {
+    width: 30%;
+    text-transform: uppercase;
+  }
+  .button-group {
+    display: flex;
+    justify-content: space-around;
+  }
+  .language-section {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-evenly;
+
+    .checkbox-container {
+      display: flex;
+      .styled-checkbox {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #333;
+        border-radius: 4px;
+        outline: none;
+        cursor: pointer;
+        margin-right: 8px;
+      }
+
+      .styled-checkbox:checked {
+        background-color: #2196f3;
+        border-color: black;
+      }
+
+      .checkbox-label {
+        cursor: pointer;
+      }
+    }
+  }
+  .template-section {
+    width: 98%;
+    margin-left: 20px;
+    display: flex;
+
+    justify-content: space-around;
+    textarea {
+      margin-right: 10px;
+      font-size: 14px;
+      width: 60%;
+    }
+    margin-bottom: 20px;
+  }
+  .testcase-section {
+    width: 98%;
+    margin-left: 20px;
+
+    display: flex;
+
+    justify-content: space-around;
+    textarea {
+      margin-right: 10px;
+      width: 60%;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+  }
+}

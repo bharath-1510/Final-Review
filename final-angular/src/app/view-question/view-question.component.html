@@ -1,0 +1,36 @@
+<mat-tab-group [hidden]="questions" class="question-section">
+  <mat-tab
+    *ngFor="let question of questions; let i = index"
+    label="Question {{ i + 1 }}"
+  >
+    <div class="question-display">
+      <h4>Description :</h4>
+      <p>
+        {{ question.description }}
+      </p>
+      <h4>Weightage : {{ question.weightage }} points</h4>
+      <h4>Compilation Time Out : {{ question.compilationTimeout }} ms</h4>
+      <h4>
+        Templates available for
+        <div class="template" *ngFor="let template of question.templates">
+          {{ template.language }}
+        </div>
+      </h4>
+      <h4>Testcase</h4>
+      <div *ngFor="let testcase of question.testcases; let i = index">
+        <h4>Input {{ i + 1 }}</h4>
+        {{ testcase.input }}
+        <h4>Output {{ i + 1 }}</h4>
+        {{ testcase.output }}
+      </div>
+    </div></mat-tab
+  >
+</mat-tab-group>
+<button
+  mat-raised-button
+  color="primary"
+  class="button-footer"
+  routerLink="/create-question"
+>
+  Create Question
+</button>
