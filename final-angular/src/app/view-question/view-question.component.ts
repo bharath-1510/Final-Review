@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Question } from '../model/question.model.';
 import { QuestionService } from '../services/question.service';
 import { Subscription } from 'rxjs';
@@ -13,19 +13,22 @@ import {
   templateUrl: './view-question.component.html',
   styleUrl: './view-question.component.scss',
 })
-export class ViewQuestionComponent {
+export class ViewQuestionComponent implements OnDestroy {
   subscription!: Subscription;
   questions: Question[] = [];
   constructor(
     private service: QuestionService,
     private _snackBar: MatSnackBar
   ) {}
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
   ngOnInit(): void {
     this.subscription = this.service.getQuestion().subscribe({
       next: (data) => {
         if (data.length != 0) {
           this.questions = data;
-          this.openSnackBar('Question Showed');
+          this.openSnackBar('Question Displayed');
         } else this.openSnackBar('There is no question created');
       },
       error: (error) => {

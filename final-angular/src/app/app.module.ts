@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -27,6 +28,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { CreateQuestionComponent } from './create-question/create-question.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { AssignQuestionComponent } from './assign-question/assign-question.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +38,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     HomeComponent,
     NotFoundComponent,
     CreateQuestionComponent,
+    AssignQuestionComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +52,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatSidenavModule,
     MatCheckboxModule,
     MatToolbarModule,
+    MatTooltipModule,
     FormsModule,
     MatIconModule,
     ReactiveFormsModule,

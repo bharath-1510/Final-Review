@@ -27,7 +27,9 @@ export class CreateQuestionComponent implements OnInit {
   hideField: boolean = false;
   testCases: TestCase[] = [];
   subscription!: Subscription;
-
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
   ngOnInit(): void {}
   constructor(
     private service: QuestionService,
