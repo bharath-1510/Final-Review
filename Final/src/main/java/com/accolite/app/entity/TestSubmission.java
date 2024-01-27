@@ -16,7 +16,7 @@ import java.util.List;
 @Entity
 public class TestSubmission {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long candidateId;
     private Long questionId;

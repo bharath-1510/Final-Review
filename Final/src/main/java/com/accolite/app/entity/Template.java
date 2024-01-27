@@ -16,7 +16,7 @@ public class Template {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long templateId;
+    private Long id;
 
 
     @Column(columnDefinition = "LONGTEXT")
