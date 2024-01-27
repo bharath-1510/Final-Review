@@ -9,4 +9,6 @@ public interface CandidateService {
     List<CandidateDTO> uploadData(MultipartFile file);
 
     String assignQuestion(List<CandidateDTO> candidates);
+
+    List<CandidateDTO> getCandidates();
 }

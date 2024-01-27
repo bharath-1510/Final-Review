@@ -27,4 +27,7 @@ export class CandidateService {
       options
     );
   }
+  getCandidates(): Observable<Candidate[]> {
+    return this.http.get<Candidate[]>(`${this.apiCandidate}/all`);
+  }
 }

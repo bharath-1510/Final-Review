@@ -72,4 +72,16 @@ public class CandidateServiceImpl implements CandidateService {
             return e.getMessage();
         }
     }
+
+    @Override
+    public List<CandidateDTO> getCandidates() {
+        List<Candidate> candidates = candidateRepository.findAll();
+        List<CandidateDTO> list = new ArrayList<>();
+        candidates.forEach(
+                (x) -> {
+                    list.add(converterService.convertCandidateToDTO(x));
+                }
+        );
+        return list;
+    }
 }

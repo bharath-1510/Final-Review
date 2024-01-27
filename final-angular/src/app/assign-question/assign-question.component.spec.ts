@@ -1,18 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { AssignCandidateComponent } from './assign-candidate.component';
+import { AssignQuestionComponent } from './assign-question.component';
 
 describe('AssignCandidateComponent', () => {
-  let component: AssignCandidateComponent;
-  let fixture: ComponentFixture<AssignCandidateComponent>;
+  let component: AssignQuestionComponent;
+  let fixture: ComponentFixture<AssignQuestionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AssignCandidateComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(AssignCandidateComponent);
+      declarations: [AssignQuestionComponent],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(AssignQuestionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

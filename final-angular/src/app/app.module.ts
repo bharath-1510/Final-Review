@@ -28,7 +28,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { CreateQuestionComponent } from './create-question/create-question.component';
 import { MatTabsModule } from '@angular/material/tabs';
-import { AssignCandidateComponent } from './assign-candidate/assign-candidate.component';
+import { AssignQuestionComponent } from './assign-question/assign-question.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,7 @@ import { AssignCandidateComponent } from './assign-candidate/assign-candidate.co
     HomeComponent,
     NotFoundComponent,
     CreateQuestionComponent,
-    AssignCandidateComponent,
+    AssignQuestionComponent,
   ],
   imports: [
     BrowserModule,

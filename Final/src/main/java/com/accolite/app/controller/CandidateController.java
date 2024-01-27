@@ -24,9 +24,12 @@ public class CandidateController {
     }
     @PostMapping("/assign")
     public ResponseEntity<Map<String, String>> assignTest(@RequestBody List<CandidateDTO> candidates) {
-        System.out.println(candidates);
         Map<String, String> response = new HashMap<>();
         response.put("result", candidateService.assignQuestion(candidates));
         return ResponseEntity.ok(response);
+    }
+    @GetMapping("/all")
+    public List<CandidateDTO> getCandidates() {
+        return candidateService.getCandidates();
     }
 }

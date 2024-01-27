@@ -12,11 +12,11 @@ import { CandidateService } from '../services/candidate.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-assign-candidate',
-  templateUrl: './assign-candidate.component.html',
-  styleUrl: './assign-candidate.component.scss',
+  selector: 'app-assign-question',
+  templateUrl: './assign-question.component.html',
+  styleUrl: './assign-question.component.scss',
 })
-export class AssignCandidateComponent {
+export class AssignQuestionComponent {
   candidates: Candidate[] = [];
   questions: Question[] = [];
   displayQuestions: Question[] = [];

@@ -28,7 +28,7 @@ export class ViewQuestionComponent implements OnDestroy {
       next: (data) => {
         if (data.length != 0) {
           this.questions = data;
-          this.openSnackBar('Question Showed');
+          this.openSnackBar('Question Displayed');
         } else this.openSnackBar('There is no question created');
       },
       error: (error) => {

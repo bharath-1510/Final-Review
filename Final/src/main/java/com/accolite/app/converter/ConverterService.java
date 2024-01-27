@@ -10,6 +10,7 @@ import com.accolite.app.entity.Template;
 import com.accolite.app.entity.TestCase;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -86,6 +87,18 @@ public class ConverterService {
         candidate.setPassword(candidateDTO.getPassword());
         candidate.setQuestions(questions);
         return candidate;
+    }
+
+    public CandidateDTO convertCandidateToDTO(Candidate candidate) {
+        CandidateDTO dto = new CandidateDTO();
+        dto.setEmail(candidate.getEmail());
+        dto.setPassword(candidate.getPassword());
+        List<QuestionDTO> questions = new ArrayList<>();
+        for (Question question : candidate.getQuestions()) {
+            questions.add(convertQuestionToDTO(question));
+        }
+        dto.setQuestions(questions);
+        return dto;
     }
 }
 

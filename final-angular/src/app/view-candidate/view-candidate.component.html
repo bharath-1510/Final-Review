@@ -1,8 +1,33 @@
+<mat-card>
+  <div class="table-container">
+    <h2>Candidate List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>INDEX</th>
+          <th>EMAIL</th>
+          <th>QUESTION ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let candidate of candidates; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ candidate.email }}</td>
+
+          <td>
+            {{ questionIds[i] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</mat-card>
+
 <button
   mat-raised-button
   color="primary"
   class="button-footer"
-  routerLink="/assign-candidate"
+  routerLink="/assign-question"
 >
   Assign question to Candidate
 </button>
