@@ -1,27 +1,31 @@
-<mat-card>
-  <div class="table-container">
-    <h2>Candidate List</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>INDEX</th>
-          <th>EMAIL</th>
-          <th>QUESTION ID</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let candidate of candidates; let i = index">
-          <td>{{ i + 1 }}</td>
-          <td>{{ candidate.email }}</td>
-
-          <td>
-            {{ questionIds[i] }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="view-section" *ngIf="candidates.length == 0">
+  <div class="empty-section">
+    <p>Zero entries so far</p>
+    <div class="icon">🚫</div>
   </div>
-</mat-card>
+</div>
+<div class="table-container" *ngIf="candidates.length != 0">
+  <h2>Candidate List</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>INDEX</th>
+        <th>EMAIL</th>
+        <th>QUESTION TITLE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let candidate of candidates; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ candidate.email }}</td>
+
+        <td>
+          {{ questionTitles[i] }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <button
   mat-raised-button

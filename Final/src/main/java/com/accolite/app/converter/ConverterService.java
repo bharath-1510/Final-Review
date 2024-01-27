@@ -20,6 +20,7 @@ public class ConverterService {
         Question question = new Question();
         question.setDescription(questionDTO.getDescription());
         question.setWeightage(questionDTO.getWeightage());
+        question.setTitle(questionDTO.getTitle());
         question.setCompilationTimeout(questionDTO.getCompilationTimeout());
         return question;
     }
@@ -51,6 +52,7 @@ public class ConverterService {
     public QuestionDTO convertQuestionToDTO(Question question) {
         QuestionDTO dto = new QuestionDTO();
         dto.setId(question.getId());
+        dto.setTitle(question.getTitle());
         dto.setDescription(question.getDescription());
         dto.setWeightage(question.getWeightage());
         dto.setCompilationTimeout(question.getCompilationTimeout());

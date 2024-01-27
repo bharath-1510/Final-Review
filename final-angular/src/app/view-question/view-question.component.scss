@@ -3,7 +3,7 @@
 .question-section {
   margin: 0 auto;
   width: 90%;
-  height: 500px;
+  height: 515px;
   overflow-y: auto;
   font-size: 18px;
 
@@ -29,4 +29,20 @@
   margin-top: 20px;
   width: 30%;
   text-transform: uppercase;
+}
+
+.empty-section {
+  text-align: center;
+  font-size: 20px;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.view-section {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

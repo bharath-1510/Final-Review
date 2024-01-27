@@ -7,6 +7,7 @@ import java.util.List;
 @Data
 public class QuestionDTO {
     private Long id;
+    private String title;
     private String description;
     private Integer weightage;
     private Long compilationTimeout;

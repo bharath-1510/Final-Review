@@ -8,6 +8,7 @@ import com.accolite.app.repository.QuestionRepository;
 import com.accolite.app.service.QuestionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -29,8 +30,8 @@ public class QuestionServiceImpl implements QuestionService {
             questionRepository.save(question);
             return "Question Saved";
         }
-        catch (Exception e){
-            throw new ApiRequestException(e.getMessage(), HttpStatus.BAD_REQUEST);
+        catch (DataIntegrityViolationException e){
+            throw new ApiRequestException("Duplicate Entry",HttpStatus.BAD_REQUEST);
         }
     }
 

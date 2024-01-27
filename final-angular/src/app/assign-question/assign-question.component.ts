@@ -38,17 +38,18 @@ export class AssignQuestionComponent {
           if (data.length != 0) {
             this.questions = data;
             this.displayQuestions = this.questions.map(
-              ({ id, weightage, description }) => ({
+              ({ id, weightage, description, title }) => ({
                 id,
                 weightage,
                 description,
+                title,
               })
             );
-            this.openSnackBar('Question Displayed');
-          } else this.openSnackBar('There is no question created');
+            this.openSnackBar('Question Shown ✅');
+          } else this.openSnackBar('No Questions Yet ❌');
         },
         error: (error) => {
-          this.openSnackBar('Server not responding');
+          this.openSnackBar('Server not responding 😵');
         },
       })
     );
@@ -98,17 +99,18 @@ export class AssignQuestionComponent {
           next: (response) => {
             if (response) {
               if (response.length == 0)
-                this.openSnackBar('There is no candidate details');
+                this.openSnackBar('There is no candidate details ❌');
               else {
-                this.openSnackBar('Data Uploaded');
+                this.openSnackBar('Data Uploaded ✅');
                 this.candidates = response;
               }
-            } else this.openSnackBar('Server not responding');
+            } else this.openSnackBar('Server not responding 😵');
           },
 
           error: (error) => {
-            if (error['status'] == 400) this.openSnackBar(error['error']);
-            else this.openSnackBar('Server not responding');
+            if (error['status'] == 400)
+              this.openSnackBar(error['error'] + ' ❌');
+            else this.openSnackBar('Server not responding 😵');
           },
         })
       );
@@ -116,11 +118,11 @@ export class AssignQuestionComponent {
   }
   onSubmit() {
     if (this.selectedQuestions.length == 0) {
-      this.openSnackBar('One Question to be Selected');
+      this.openSnackBar('One Question to be Selected ❌');
       return;
     }
     if (this.candidates.length == 0) {
-      this.openSnackBar('Candidate Data is Empty');
+      this.openSnackBar('Candidate Data is Empty ❌');
       return;
     }
     for (let index = 0; index < this.candidates.length; index++) {
@@ -129,12 +131,13 @@ export class AssignQuestionComponent {
     this.subscriptions.push(
       this.candidateService.assignCandidates(this.candidates).subscribe({
         next: (data) => {
-          this.openSnackBar(data['result']);
+          this.openSnackBar(data['result'] + ' ✅');
           this.router.navigate(['/view-candidate']);
         },
         error: (error) => {
-          if (error['status'] === 400) this.openSnackBar(error['error']);
-          else this.openSnackBar('Server not responding');
+          if (error['status'] === 400)
+            this.openSnackBar(error['error'] + ' ❌');
+          else this.openSnackBar('Server not responding 😵');
         },
       })
     );

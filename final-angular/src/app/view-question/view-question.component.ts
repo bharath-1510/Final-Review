@@ -28,11 +28,11 @@ export class ViewQuestionComponent implements OnDestroy {
       next: (data) => {
         if (data.length != 0) {
           this.questions = data;
-          this.openSnackBar('Question Displayed');
-        } else this.openSnackBar('There is no question created');
+          this.openSnackBar('Question Shown ✅');
+        }
       },
       error: (error) => {
-        this.openSnackBar('Server not responding');
+        this.openSnackBar('Server not responding 😵');
       },
     });
   }
