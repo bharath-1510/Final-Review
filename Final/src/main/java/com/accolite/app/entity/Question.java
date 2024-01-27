@@ -19,6 +19,8 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(unique = true)
+    private String title;
     @Column(columnDefinition = "LONGTEXT")
     private String description;
     private Integer weightage;

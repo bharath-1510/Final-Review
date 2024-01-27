@@ -26,6 +26,7 @@ export class CreateQuestionComponent implements OnInit {
   testCaseCount: number = 0;
   hideField: boolean = false;
   testCases: TestCase[] = [];
+  title: string = '';
   subscription!: Subscription;
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
@@ -58,22 +59,24 @@ export class CreateQuestionComponent implements OnInit {
       }
     }
     if (
+      this.title.trim() == '' &&
       this.description.trim() == '' &&
       this.weightage == 0 &&
       this.compilationTimeout == 0
     ) {
-      this.openSnackBar('Enter The Valid Data');
+      this.openSnackBar('Enter The Valid Data ❌');
       return;
     }
     if (this.testCases.length == 0) {
-      this.openSnackBar('Atleast One TestCase Needed');
+      this.openSnackBar('Atleast One TestCase Needed ❌');
       return;
     }
     if (this.templates.length == 0) {
-      this.openSnackBar('Atleast One Template Needed');
+      this.openSnackBar('Atleast One Template Needed ❌');
       return;
     }
     let question: Question = {
+      title: this.title,
       description: this.description,
       weightage: this.weightage,
       compilationTimeout: this.compilationTimeout,
@@ -82,12 +85,12 @@ export class CreateQuestionComponent implements OnInit {
     };
     this.subscription = this.service.saveQuestion(question).subscribe({
       next: (data) => {
-        this.openSnackBar(data['result']);
+        this.openSnackBar(data['result'] + ' ✅');
         this.router.navigate(['/view-question']);
       },
       error: (error) => {
-        if (error['status'] === 400) this.openSnackBar(error['error']);
-        else this.openSnackBar('Server not responding');
+        if (error['status'] === 400) this.openSnackBar(error['error'] + ' ❌');
+        else this.openSnackBar('Server not responding 😵');
       },
     });
   }

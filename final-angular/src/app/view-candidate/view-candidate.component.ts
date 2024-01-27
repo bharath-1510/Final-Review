@@ -16,7 +16,7 @@ import { Subscription } from 'rxjs';
 export class ViewCandidateComponent {
   subscription!: Subscription;
   candidates: Candidate[] = [];
-  questionIds: string[] = [];
+  questionTitles: string[] = [];
   constructor(
     private service: CandidateService,
     private _snackBar: MatSnackBar
@@ -30,21 +30,21 @@ export class ViewCandidateComponent {
         if (data.length != 0) {
           this.candidates = data;
           for (let index = 0; index < this.candidates.length; index++) {
-            let questionId: string = '';
+            let title: string = '';
             const question = this.candidates[index].questions;
             if (question)
               for (let i = 0; i < question.length; i++) {
                 const element = question[i];
-                questionId += element.id + ',';
+                title += element.title + ',';
               }
-            questionId = questionId.slice(0, -1);
-            this.questionIds.push(questionId);
+            title = title.slice(0, -1);
+            this.questionTitles.push(title);
           }
-          this.openSnackBar('Candidates Displayed');
-        } else this.openSnackBar('There is no candidate assigned');
+          this.openSnackBar('Candidates Shown ✅');
+        }
       },
       error: (error) => {
-        this.openSnackBar('Server not responding');
+        this.openSnackBar('Server not responding 😵');
       },
     });
   }

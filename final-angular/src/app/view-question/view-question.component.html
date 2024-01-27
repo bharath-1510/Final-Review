@@ -1,9 +1,16 @@
-<mat-tab-group [hidden]="questions" class="question-section">
+<div class="view-section" *ngIf="questions.length == 0">
+  <div class="empty-section">
+    <p>Zero entries so far</p>
+    <div class="icon">🚫</div>
+  </div>
+</div>
+<mat-tab-group class="question-section" *ngIf="questions.length != 0">
   <mat-tab
     *ngFor="let question of questions; let i = index"
     label="Question {{ i + 1 }}"
   >
     <div class="question-display">
+      <h2>{{ question.title }}</h2>
       <h4>Description :</h4>
       <p>
         {{ question.description }}

@@ -7,6 +7,7 @@ import com.accolite.app.entity.Candidate;
 import com.accolite.app.entity.Question;
 import com.accolite.app.exception.ApiRequestException;
 import com.accolite.app.repository.CandidateRepository;
+import com.accolite.app.repository.QuestionRepository;
 import com.accolite.app.service.CandidateService;
 import com.accolite.app.util.UtilityService;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,6 +32,8 @@ public class CandidateServiceImpl implements CandidateService {
     private final ConverterService converterService;
     @Autowired
     CandidateRepository candidateRepository;
+    @Autowired
+    QuestionRepository questionRepository;
     @Override
     public List<CandidateDTO> uploadData(MultipartFile file) {
         if (file.isEmpty()) {
@@ -58,7 +62,7 @@ public class CandidateServiceImpl implements CandidateService {
         try {
             List<Question> questions = new ArrayList<>();
             candidates.get(0).getQuestions().forEach(
-                    x -> questions.add(converterService.convertQuestionToEntity(x))
+                    x -> questions.add(questionRepository.findById(x.getId()).get())
             );
             candidates.forEach(
                     candidateDTO -> {
@@ -68,8 +72,8 @@ public class CandidateServiceImpl implements CandidateService {
             );
             return "Questions Assigned";
         }
-        catch (Exception e){
-            return e.getMessage();
+        catch (DataIntegrityViolationException e){
+            throw new ApiRequestException("Duplicate Entry",HttpStatus.BAD_REQUEST);
         }
     }
 
