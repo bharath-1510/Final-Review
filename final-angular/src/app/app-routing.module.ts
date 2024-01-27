@@ -5,6 +5,7 @@ import { ViewCandidateComponent } from './view-candidate/view-candidate.componen
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CreateQuestionComponent } from './create-question/create-question.component';
+import { AssignCandidateComponent } from './assign-candidate/assign-candidate.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
     component: ViewCandidateComponent,
   },
   { path: 'create-question', component: CreateQuestionComponent },
+  { path: 'assign-candidate', component: AssignCandidateComponent },
   {
     path: '',
     component: HomeComponent,

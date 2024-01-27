@@ -1,8 +1,10 @@
 package com.accolite.app.converter;
 
+import com.accolite.app.dto.CandidateDTO;
 import com.accolite.app.dto.QuestionDTO;
 import com.accolite.app.dto.TemplateDTO;
 import com.accolite.app.dto.TestCaseDTO;
+import com.accolite.app.entity.Candidate;
 import com.accolite.app.entity.Question;
 import com.accolite.app.entity.Template;
 import com.accolite.app.entity.TestCase;
@@ -76,6 +78,14 @@ public class ConverterService {
                     return testCaseDTO;
                 })
                 .collect(Collectors.toList());
+    }
+
+    public Candidate convertCandidateToEntity(CandidateDTO candidateDTO, List<Question> questions) {
+        Candidate candidate = new Candidate();
+        candidate.setEmail(candidateDTO.getEmail());
+        candidate.setPassword(candidateDTO.getPassword());
+        candidate.setQuestions(questions);
+        return candidate;
     }
 }
 

@@ -1,0 +1,56 @@
+.assign-section {
+  margin: 0 auto;
+  width: 98%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  mat-card {
+    width: 49%;
+    box-shadow: 0px 5px 5px -1px rgba(0, 0, 0, 0.2),
+      0px 5px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  }
+  .table-container {
+    max-height: 400px;
+    overflow-x: auto;
+    width: 90%;
+  }
+  table {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    width: 90%;
+    overflow-y: auto;
+  }
+
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tbody {
+    height: 20px;
+  }
+  .question-select {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.button-footer {
+  margin-left: 35%;
+  margin-top: 20px;
+  width: 30%;
+
+  text-transform: uppercase;
+}
+
+.button {
+  margin-left: 35%;
+  margin-top: 20px;
+}
