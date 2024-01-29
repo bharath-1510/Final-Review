@@ -17,7 +17,7 @@ import lombok.Setter;
 public class TestCase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long testcaseId;
 
     @Column(columnDefinition = "LONGTEXT")
     private String input;
