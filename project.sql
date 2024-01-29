@@ -1,7 +1,7 @@
-create database CodelyserFinal;
-drop database CodelyserFinal;
+create database testing;
+drop database testing;
 show tables;
-use CodelyserFinal;
+use testing;
 select * from template;
 select * from testcase;
 select * from question;
