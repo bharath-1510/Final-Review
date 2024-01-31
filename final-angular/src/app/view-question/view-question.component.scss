@@ -1,26 +1,73 @@
 @import "../app.component.scss";
 
-.question-section {
+.view {
+  margin-top: 15px;
+  height: 550px;
+}
+
+.question-table {
   margin: 0 auto;
   width: 90%;
-  height: 500px;
+  height: 414px;
   overflow-y: auto;
-  font-size: 18px;
-
-  .question-display {
-    padding: 5px;
-    h4 {
-      font-weight: bold;
+  .button-group {
+    display: flex;
+    justify-content: space-evenly;
+    button {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      font-size: inherit;
+      color: inherit;
+      cursor: pointer;
+    }
+  }
+  .question-header {
+    display: flex;
+    margin-top: 10px;
+    height: 30px;
+    width: 100%;
+    justify-content: space-between;
+    select {
+      width: 20%;
+      font-size: 16px;
+    }
+    button {
+      border: none;
+      border-radius: 5px;
+      width: 40px;
+      background-color: blue;
+      color: white;
+      cursor: pointer;
       display: flex;
-      margin: 0 0 3px;
+      align-items: center;
+      justify-content: center;
+      mat-icon {
+        margin-bottom: 7px;
+        margin-right: 5px;
+        font-size: 30px;
+      }
     }
-    p {
-      text-indent: 5%;
-      text-align: justify;
+  }
+  table {
+    border-collapse: collapse;
+    margin-top: 20px;
+    width: 100%;
+
+    th,
+    td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
     }
-    .template {
-      margin-left: 20px;
-      font-weight: lighter;
+
+    thead {
+      text-transform: uppercase;
+    }
+
+    tbody {
+      height: 20px;
     }
   }
 }
@@ -41,7 +88,7 @@
 }
 
 .view-section {
-  height: 400px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;

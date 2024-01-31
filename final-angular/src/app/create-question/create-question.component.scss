@@ -15,8 +15,11 @@
   }
   .button-footer {
     width: 30%;
+    background-color: blue;
+    color: white;
     text-transform: uppercase;
   }
+
   .button-group {
     display: flex;
     justify-content: space-around;

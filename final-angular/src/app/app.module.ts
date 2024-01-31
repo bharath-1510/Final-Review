@@ -29,6 +29,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { CreateQuestionComponent } from './create-question/create-question.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { AssignQuestionComponent } from './assign-question/assign-question.component';
+import { QuestionDisplayComponent } from './question-display/question-display.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { AssignQuestionComponent } from './assign-question/assign-question.compo
     NotFoundComponent,
     CreateQuestionComponent,
     AssignQuestionComponent,
+    QuestionDisplayComponent,
   ],
   imports: [
     BrowserModule,

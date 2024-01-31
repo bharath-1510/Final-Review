@@ -57,8 +57,15 @@ public class ConverterService {
         dto.setDescription(question.getDescription());
         dto.setWeightage(question.getWeightage());
         dto.setCompilationTimeout(question.getCompilationTimeout());
-        dto.setTemplates(convertTemplatesToDTOs(question.getTemplates()));
-        dto.setTestcases(convertTestCasesToDTOs(question.getTestCases()));
+        dto.setType(question.getType());
+        if(question.getType().equals("Coding")) {
+            dto.setTemplates(convertTemplatesToDTOs(question.getTemplates()));
+            dto.setTestcases(convertTestCasesToDTOs(question.getTestCases()));
+        }
+        else {
+            dto.setQuery(question.getQuery());
+            dto.setCommands(question.getCommands());
+        }
         return dto;
     }
 

@@ -1,43 +1,57 @@
-<div class="view-section" *ngIf="questions.length == 0">
-  <div class="empty-section">
-    <p>Zero entries so far</p>
-    <div class="icon">🚫</div>
-  </div>
-</div>
-<mat-tab-group class="question-section" *ngIf="questions.length != 0">
-  <mat-tab
-    *ngFor="let question of questions; let i = index"
-    label="Question {{ i + 1 }}"
-  >
-    <div class="question-display">
-      <h2>{{ question.title }}</h2>
-      <h4>Description :</h4>
-      <p>
-        {{ question.description }}
-      </p>
-      <h4>Weightage : {{ question.weightage }} points</h4>
-      <h4>Compilation Time Out : {{ question.compilationTimeout }} ms</h4>
-      <h4>
-        Templates available for
-        <div class="template" *ngFor="let template of question.templates">
-          {{ template.language }}
-        </div>
-      </h4>
-      <h4>Testcase</h4>
-      <div *ngFor="let testcase of question.testcases; let i = index">
-        <h4>Input {{ i + 1 }}</h4>
-        {{ testcase.input }}
-        <h4>Output {{ i + 1 }}</h4>
-        {{ testcase.output }}
+<mat-card class="view">
+  <section class="question-table">
+    <div class="question-header">
+      <select (change)="onChange()" [(ngModel)]="type">
+        <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+      </select>
+
+      <button matTooltip="Add" routerLink="/create-question">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div class="view-section" *ngIf="questions.length == 0">
+      <div class="empty-section">
+        <p>Zero entries so far</p>
+        <div class="icon">🚫</div>
       </div>
-    </div></mat-tab
+    </div>
+    <table *ngIf="questions.length != 0">
+      <thead>
+        <tr>
+          <th>INDEX</th>
+          <th>QUESTION TITLE</th>
+          <th>Question Type</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let question of questions; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ question.title }}</td>
+
+          <td>
+            {{ question.type }}
+          </td>
+          <td>
+            <div class="button-group">
+              <button matTooltip="View" (click)="openDialog(question)">
+                <mat-icon>remove_red_eye</mat-icon>
+              </button>
+              <button matTooltip="Download">
+                <mat-icon>cloud_download</mat-icon>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <button
+    mat-raised-button
+    color="primary"
+    class="button-footer"
+    routerLink="/"
   >
-</mat-tab-group>
-<button
-  mat-raised-button
-  color="primary"
-  class="button-footer"
-  routerLink="/create-question"
->
-  Create Question
-</button>
+    Back
+  </button>
+</mat-card>

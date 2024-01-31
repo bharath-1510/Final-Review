@@ -1,1 +1,36 @@
 @import "../app.component.scss";
+
+.home-section {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  mat-card {
+    width: 40%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    mat-icon {
+      text-align: center;
+      font-size: 60px;
+      width: 100%;
+      height: 70px;
+    }
+    button {
+      width: 70%;
+    }
+    button:hover {
+      background: rgb(131, 58, 180);
+      background: linear-gradient(
+        90deg,
+        rgba(131, 58, 180, 1) 0%,
+        rgba(253, 29, 29, 1) 50%,
+        rgba(252, 176, 69, 1) 100%
+      );
+      color: white;
+    }
+  }
+}

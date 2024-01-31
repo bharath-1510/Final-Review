@@ -1,0 +1,12 @@
+<section class="question">
+  <h4>{{ question.title }}</h4>
+
+  <h4>Description</h4>
+  <p>
+    {{ question.description }}
+  </p>
+  <h4>Type : {{ question.type }}</h4>
+  <h4>Weightage : {{ question.weightage }}</h4>
+
+  <button mat-button (click)="onClose()">Close</button>
+</section>

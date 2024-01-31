@@ -17,4 +17,5 @@ INSERT INTO Students (Id, Name, Marks) VALUES (8, 'Student8', 42);
 INSERT INTO Students (Id, Name, Marks) VALUES (9, 'Student9', 55);
 INSERT INTO Students (Id, Name, Marks) VALUES (10, 'Student10', 70);
 
+Output Query
 SELECT * FROM Students WHERE Marks > 75 ORDER BY Marks DESC;

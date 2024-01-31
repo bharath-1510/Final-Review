@@ -72,8 +72,7 @@ export class CreateQuestionComponent implements OnInit {
       if (
         this.title.trim() == '' ||
         this.description.trim() == '' ||
-        this.weightage == 0 ||
-        this.compilationTimeout == 0
+        this.weightage == 0
       ) {
         this.openSnackBar('Enter The Valid Data ❌');
         return;
@@ -95,6 +94,17 @@ export class CreateQuestionComponent implements OnInit {
         templates: this.templates,
         testcases: this.testCases,
       };
+      this.subscription = this.service.saveQuestion(question).subscribe({
+        next: (data) => {
+          this.openSnackBar(data['result'] + ' ✅');
+          this.router.navigate(['/view-question']);
+        },
+        error: (error) => {
+          if (error['status'] === 400)
+            this.openSnackBar(error['error'] + ' ❌');
+          else this.openSnackBar('Server not responding 😵');
+        },
+      });
     } else {
       let query: string = '';
       let commands: string = '';
