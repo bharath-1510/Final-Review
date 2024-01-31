@@ -20,9 +20,14 @@
     color: inherit;
     cursor: pointer;
     color: white;
+
+    mat-icon {
+      font-size: 20px;
+    }
   }
   button:hover {
-    color: black;
+    color: rgb(2, 2, 154);
+    background-color: white;
   }
 }
 .content {

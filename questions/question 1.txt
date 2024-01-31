@@ -33,44 +33,37 @@ int main(){
 
 Testcases : 
 1.
-abc
-pqr
+abc pqr
 
 apbqcr
 
 2.
-ab
-pqrs
+ab pqrs
 
 apbqrs
 
 3.
-abcd
-pq
+abcd pq
 
 apbqcd
 
 4.
-hello
-world
+hello world
 
 hweolrllod
 
 5.
-123
-ABC
+123 ABC
 
 1A2B3C
 
 6.
-apple
-orange
+apple orange
 
 aoprpalneg
 
 7.
-cat
-dog
+cat dog
 
 cdaotg
 

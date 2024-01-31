@@ -1,3 +1,9 @@
+@import "../app.component.scss";
+.mat-card {
+  margin-top: 20px;
+  height: 450px;
+  background-color: wheat;
+}
 .assign-section {
   margin: 0 auto;
   width: 98%;
@@ -5,19 +11,22 @@
   justify-content: space-between;
   padding: 10px;
   mat-card {
+    height: 350px;
     width: 49%;
     box-shadow: 0px 5px 5px -1px rgba(0, 0, 0, 0.2),
       0px 5px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   }
   .table-container {
-    max-height: 400px;
+    max-height: 230px;
     overflow-x: auto;
-    width: 90%;
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 100%;
   }
   table {
     border-collapse: collapse;
     margin-bottom: 20px;
-    width: 90%;
+    width: 100%;
     overflow-y: auto;
   }
 
@@ -53,4 +62,12 @@
 .button {
   margin-left: 35%;
   margin-top: 20px;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  width: 100%;
 }

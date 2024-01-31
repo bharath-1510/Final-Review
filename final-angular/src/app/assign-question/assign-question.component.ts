@@ -60,7 +60,7 @@ export class AssignQuestionComponent {
     this._snackBar.open(message, 'Close', {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
-      duration: 5000,
+      duration: 3000,
     });
   }
   onTableRowSelect(event: any) {
