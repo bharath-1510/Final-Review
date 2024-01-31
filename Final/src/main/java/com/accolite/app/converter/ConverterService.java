@@ -21,6 +21,7 @@ public class ConverterService {
         question.setDescription(questionDTO.getDescription());
         question.setWeightage(questionDTO.getWeightage());
         question.setTitle(questionDTO.getTitle());
+        question.setType(questionDTO.getType());
         question.setCompilationTimeout(questionDTO.getCompilationTimeout());
         return question;
     }

@@ -1,1 +1,4 @@
-export const languages = ['Java', 'Python', 'Cpp'];
+export const languages: { [key: string]: string[] } = {
+  Coding: ['Java', 'Python', 'Cpp'],
+  Database: ['MySQL'],
+};

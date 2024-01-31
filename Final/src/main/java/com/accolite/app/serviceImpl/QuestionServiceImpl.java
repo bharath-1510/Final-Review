@@ -25,8 +25,15 @@ public class QuestionServiceImpl implements QuestionService {
     public String saveQuestion(QuestionDTO questionDTO) {
         try {
             Question question = questionRepository.save(converterService.convertQuestionToEntity(questionDTO));
-            question.setTemplates(converterService.convertTemplatesToEntity(questionDTO.getTemplates(),question));
-            question.setTestCases(converterService.convertTestcasesToEntity(questionDTO.getTestcases(),question));
+            if(questionDTO.getType().equals("Database"))
+            {
+                question.setCommands(questionDTO.getCommands());
+                question.setQuery(questionDTO.getQuery());
+            }
+            else {
+                question.setTemplates(converterService.convertTemplatesToEntity(questionDTO.getTemplates(), question));
+                question.setTestCases(converterService.convertTestcasesToEntity(questionDTO.getTestcases(), question));
+            }
             questionRepository.save(question);
             return "Question Saved";
         }

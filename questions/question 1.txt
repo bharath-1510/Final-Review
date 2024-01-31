@@ -1,0 +1,75 @@
+Description
+	You are given two strings word1 and word2. Merge the strings by adding letters in alternating order, starting with word1. If a string is longer than the other, append the additional letters onto the end of the merged string. Return the merged string.
+
+Title:
+Merge Strings Alternately
+
+template : Java, CPP
+
+class Solution {
+    public static String mergeAlternately(String word1, String word2) {
+        
+    }
+	public static void main(String ar[])
+	{
+		String word1 = ar[0];
+		String word2 = ar[1];
+		System.out.println(mergeAlternately(word1,word2));
+	}
+}
+
+#include <iostream>
+using namespace std;
+string mergeAlternately(string word1, string word2) {
+        
+}
+int main(){
+	string word1,word2;
+	cin>>word1>>word2;
+	cout<<mergeAlternately(word1,word2);
+	return 0;
+}
+
+
+Testcases : 
+1.
+abc
+pqr
+
+apbqcr
+
+2.
+ab
+pqrs
+
+apbqrs
+
+3.
+abcd
+pq
+
+apbqcd
+
+4.
+hello
+world
+
+hweolrllod
+
+5.
+123
+ABC
+
+1A2B3C
+
+6.
+apple
+orange
+
+aoprpalneg
+
+7.
+cat
+dog
+
+cdaotg
