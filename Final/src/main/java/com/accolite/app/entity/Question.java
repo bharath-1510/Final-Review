@@ -25,6 +25,11 @@ public class Question {
     private String description;
     private Integer weightage;
     private Long compilationTimeout;
+    @Column(columnDefinition = "LONGTEXT")
+    private String commands;
+    @Column(columnDefinition = "LONGTEXT")
+    private String query;
+    private String type;
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<TestCase> testCases;

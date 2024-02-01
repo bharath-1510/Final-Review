@@ -8,22 +8,9 @@
   color: red;
   text-transform: uppercase;
 }
-mat-sidenav-container {
-  height: calc(205vh - 115vh);
-}
-mat-sidenav {
-  width: 200px;
-  background-color: #eee;
-}
-
-h1 {
-  margin-top: 100px;
-  text-transform: uppercase;
-  font-size: 50px;
-  text-align: center;
-}
-
-mat-list {
+.header {
+  margin-top: 20px;
+  margin-left: 20px;
   button {
     background: none;
     border: none;
@@ -32,10 +19,21 @@ mat-list {
     font-size: inherit;
     color: inherit;
     cursor: pointer;
+    color: white;
+
+    mat-icon {
+      font-size: 20px;
+    }
   }
   button:hover {
-    color: red;
+    color: rgb(2, 2, 154);
+    background-color: white;
   }
+}
+.content {
+  width: 90%;
+  margin: 0 auto;
+  height: 100%;
 }
 mat-card {
   width: 100%;

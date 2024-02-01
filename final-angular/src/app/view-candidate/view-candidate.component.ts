@@ -54,7 +54,7 @@ export class ViewCandidateComponent {
     this._snackBar.open(message, 'Close', {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
-      duration: 5000,
+      duration: 3000,
     });
   }
 }

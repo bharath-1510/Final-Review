@@ -1,0 +1,117 @@
+Description
+	You are given two strings word1 and word2. Merge the strings by adding letters in alternating order, starting with word1. If a string is longer than the other, append the additional letters onto the end of the merged string. Return the merged string.
+
+Title:
+Merge Strings Alternately
+
+template : Java, CPP
+
+class Solution {
+    public static String mergeAlternately(String word1, String word2) {
+        //Write Code here
+    }
+	public static void main(String ar[])
+	{
+		String word1 = ar[0];
+		String word2 = ar[1];
+		System.out.println(mergeAlternately(word1,word2));
+	}
+}
+
+#include <iostream>
+using namespace std;
+string mergeAlternately(string word1, string word2) {
+    //Write Code here
+}
+int main(){
+	string word1,word2;
+	cin>>word1>>word2;
+	cout<<mergeAlternately(word1,word2);
+	return 0;
+}
+
+
+Testcases : 
+1.
+abc pqr
+
+apbqcr
+
+2.
+ab pqrs
+
+apbqrs
+
+3.
+abcd pq
+
+apbqcd
+
+4.
+hello world
+
+hweolrllod
+
+5.
+123 ABC
+
+1A2B3C
+
+6.
+apple orange
+
+aoprpalneg
+
+7.
+cat dog
+
+cdaotg
+
+solution:
+
+public class Solution
+{
+	public static String mergeAlternately(String word1, String word2) {
+         StringBuilder result = new StringBuilder();
+        int i = 0;
+        while (i < word1.length() || i < word2.length()) {
+            if (i < word1.length()) {
+                result.append(word1.charAt(i));
+            }
+            if (i < word2.length()) {
+                result.append(word2.charAt(i));
+            }
+            i++;
+        }
+        return result.toString();
+    }
+	public static void main(String ar[])
+	{
+		String word1 = ar[0];
+		String word2 = ar[1];
+		System.out.println(mergeAlternately(word1,word2));
+	}
+}
+
+#include <iostream>
+using namespace std;
+string mergeAlternately(string word1, string word2) {
+       string result = "";
+        int i = 0;
+        while (i < word1.length() || i < word2.length()) {
+            if (i < word1.length()) {
+                result += word1[i];
+            }
+            if (i < word2.length()) {
+                result += word2[i];
+            }
+            i++;
+        }
+        return result; 
+}
+int main(){
+	string word1,word2;
+	cin>>word1>>word2;
+	cout<<mergeAlternately(word1,word2);
+	return 0;
+}

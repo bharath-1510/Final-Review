@@ -15,8 +15,11 @@
   }
   .button-footer {
     width: 30%;
+    background-color: blue;
+    color: white;
     text-transform: uppercase;
   }
+
   .button-group {
     display: flex;
     justify-content: space-around;
@@ -55,13 +58,15 @@
     display: flex;
 
     justify-content: space-around;
+    flex-wrap: wrap;
     textarea {
       margin-right: 10px;
+      margin-bottom: 20px;
+
       font-size: 14px;
-      width: 60%;
+      width: 46%;
       resize: none;
     }
-    margin-bottom: 20px;
   }
   .testcase-section {
     width: 98%;

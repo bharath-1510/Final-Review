@@ -7,3 +7,4 @@ select * from testcase;
 select * from question;
 select * from candidate;
 select * from candidate_question;
+delete from question where id=203;

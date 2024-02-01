@@ -1,4 +1,3 @@
-
 <section class="form">
   <mat-card>
     <p>
@@ -41,72 +40,77 @@
           matInput
           placeholder="Compilation TimeOut in ms"
           [(ngModel)]="compilationTimeout"
+          [readonly]="type == 'Database'"
           required
         />
       </mat-form-field>
     </p>
-    <div class="language-section">
-      <div class="checkbox-container" *ngFor="let language of languages">
-        <input
-          type="checkbox"
-          class="styled-checkbox"
-          (change)="onSelect(language)"
-        />
-        <label for="myCheckbox" class="checkbox-label">{{ language }}</label>
-      </div>
-    </div>
-    <div class="template-section">
-      <textarea
-        *ngFor="let lang of displayTextArea | keyvalue"
-        [hidden]="!lang.value"
-        [(ngModel)]="template[lang.key]"
-        rows="15"
-      >
-      </textarea>
-    </div>
-    <p [hidden]="hideField">
-      <mat-form-field appearance="fill">
-        <mat-label>TestCase Count</mat-label>
-        <input
-          matInput
-          type="number"
-          min="1"
-          [(ngModel)]="testCaseCount"
-          (change)="generateTestCases()"
-        />
+    <p>
+      <mat-form-field>
+        <mat-label>Question Type</mat-label>
+        <mat-select [(ngModel)]="type" (selectionChange)="onChange()">
+          <mat-option *ngFor="let type of types" [value]="type">{{
+            type
+          }}</mat-option>
+        </mat-select>
       </mat-form-field>
     </p>
-    <div
-      *ngFor="let testCase of testCases; let i = index"
-      class="testcase-section"
-    >
-      <textarea
-        [(ngModel)]="testCase.input"
-        placeholder="Input {{ i + 1 }}"
-        rows="10"
-      ></textarea>
-      <textarea
-        [(ngModel)]="testCase.output"
-        placeholder="Output {{ i + 1 }}"
-        rows="10"
-      ></textarea>
-    </div>
+    <section *ngIf="type != ''">
+      <div class="language-section">
+        <div class="checkbox-container" *ngFor="let language of languages">
+          <input
+            id="{{ language }}"
+            type="checkbox"
+            class="styled-checkbox"
+            (change)="onSelect(language)"
+          />
+          <label for="{{ language }}" class="checkbox-label">{{
+            language
+          }}</label>
+        </div>
+      </div>
+      <div class="template-section">
+        <textarea
+          *ngFor="let lang of displayTextArea | keyvalue"
+          [hidden]="!lang.value"
+          [(ngModel)]="template[lang.key]"
+          rows="15"
+        >
+        </textarea>
+      </div>
+      <section *ngIf="type == 'Coding'">
+        <p [hidden]="hideField">
+          <mat-form-field appearance="fill">
+            <mat-label>TestCase Count</mat-label>
+            <input
+              matInput
+              type="number"
+              min="1"
+              [(ngModel)]="testCaseCount"
+              (change)="generateTestCases()"
+            />
+          </mat-form-field>
+        </p>
+        <div
+          *ngFor="let testCase of testCases; let i = index"
+          class="testcase-section"
+        >
+          <textarea
+            [(ngModel)]="testCase.input"
+            placeholder="Input {{ i + 1 }}"
+            rows="10"
+          ></textarea>
+          <textarea
+            [(ngModel)]="testCase.output"
+            placeholder="Output {{ i + 1 }}"
+            rows="10"
+          ></textarea>
+        </div>
+      </section>
+    </section>
     <div class="button-group">
-      <button
-        mat-raised-button
-        color="primary"
-        class="button-footer"
-        (click)="onSubmit()"
-      >
+      <button mat-raised-button class="button-footer" (click)="onSubmit()">
         Save Question
-      </button>
-      <button
-        mat-raised-button
-        color="primary"
-        class="button-footer"
-        routerLink="/view-question"
-      >
-        Back
       </button>
     </div>
   </mat-card>

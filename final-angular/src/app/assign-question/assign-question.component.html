@@ -1,88 +1,100 @@
-<section class="assign-section">
-  <!-- First mat-card -->
-  <mat-card>
-    <mat-card-content>
-      <div class="question-select">
-        <div class="table-container">
-          <h2>Question List</h2>
-          <table id="questionsDisplay" (click)="onTableRowSelect($event)">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Weightage</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                *ngFor="let question of displayQuestions"
-                matTooltip="{{ question.description }}"
-              >
-                <td>{{ question.id }}</td>
-                <td>{{ question.weightage }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="table-container">
-          <h2>Selected Question</h2>
+<mat-card class="mat-card">
+  <section class="assign-section">
+    <!-- First mat-card -->
+    <mat-card>
+      <mat-card-content>
+        <div class="question-select">
+          <div class="table">
+            <h3>Question List</h3>
 
-          <table id="selectedQuestions" (click)="onTableRowRemove($event)">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Weightage</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                *ngFor="let question of selectedQuestions"
-                matTooltip="{{ question.description }}"
-              >
-                <td>{{ question.id }}</td>
-                <td>{{ question.weightage }}</td>
-              </tr>
-            </tbody>
-          </table>
+            <div class="table-container">
+              <table id="questionsDisplay" (click)="onTableRowSelect($event)">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Weightage</th>
+                    <th>Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="let question of displayQuestions"
+                    matTooltip="{{ question.title }} "
+                  >
+                    <td>{{ question.id }}</td>
+                    <td>{{ question.weightage }}</td>
+                    <td>{{ question.type?.slice(0, 1) }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="table">
+            <h3>Selected Question</h3>
+            <div class="table-container">
+              <table id="selectedQuestions" (click)="onTableRowRemove($event)">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Weightage</th>
+                    <th>Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="let question of selectedQuestions"
+                    matTooltip="{{ question.title }} "
+                  >
+                    <td>{{ question.id }}</td>
+                    <td>{{ question.weightage }}</td>
+                    <td>{{ question.type?.slice(0, 1) }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
+      </mat-card-content>
+    </mat-card>
 
-  <!-- Second mat-card -->
-  <mat-card>
-    <mat-card-content>
-      <div class="table-container">
-        <h2>Candidate List</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Index</th>
-              <th>EMAIL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let candidate of candidates; let i = index">
-              <td>{{ i + 1 }}</td>
-              <td>{{ candidate.email }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <input
-        color="primary"
-        class="button"
-        type="file"
-        accept=".xlsx, .xls"
-        (change)="onFileChange($event)"
-      />
-    </mat-card-content>
-  </mat-card>
-</section>
-<button
-  mat-raised-button
-  color="primary"
-  class="button-footer"
-  (click)="onSubmit()"
->
-  Assign Question
-</button>
+    <mat-card>
+      <mat-card-content>
+        <div class="table">
+          <h3>Candidate List</h3>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Index</th>
+                  <th>EMAIL</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let candidate of candidates; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ candidate.email }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <input
+            color="primary"
+            class="button"
+            type="file"
+            accept=".xlsx, .xls"
+            (change)="onFileChange($event)"
+          />
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </section>
+  <button
+    mat-raised-button
+    color="primary"
+    class="button-footer"
+    (click)="onSubmit()"
+  >
+    Assign Question
+  </button>
+</mat-card>

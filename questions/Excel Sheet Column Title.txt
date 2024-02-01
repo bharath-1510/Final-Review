@@ -1,0 +1,101 @@
+Description
+	Given an integer columnNumber, return its corresponding column title as it appears in an Excel sheet.
+For example:
+
+A -> 1
+B -> 2
+C -> 3
+...
+Z -> 26
+AA -> 27
+AB -> 28 
+...
+
+Title
+	Excel Sheet Column Title
+
+Template Java Python
+
+class Solution {
+    public static String convertToTitle(int c) {
+        //Write Code here
+    }
+	public static void main(String ar[])
+	{
+		int n = Integer.parseInt(ar[0]);
+		System.out.print(convertToTitle(n));
+	}
+}
+
+
+def convertToTitle(columnNumber):
+	#Write Code Here
+
+print(convertToTitle(int(input())))
+
+
+testcase : 
+
+1.
+1
+
+A
+
+2.
+26
+
+Z
+
+3.
+28
+
+AB
+
+4.
+701
+
+ZY
+
+5.
+1007
+
+ALS
+
+
+
+
+solution
+
+class Solution {
+    public static String convertToTitle(int c) {
+        if(c<27){
+            return Character.toString((char) ('A' + (c- 1)));
+        }
+        StringBuilder ans=new StringBuilder("");
+        while(c>0){
+            int x=c%26;
+            if(x==0){
+                ans.append('Z');
+                c--;
+            }
+            else{
+                ans.append((char)('A'+x-1));
+            }
+            c/=26;
+        }
+        return ans.reverse().toString();
+    }
+	public static void main(String ar[])
+	{
+		int n = Integer.parseInt(ar[0]);
+		System.out.print(convertToTitle(n));
+	}
+}
+
+def convertToTitle(columnNumber):
+        output = ""
+        while columnNumber > 0:
+            output = chr(ord('A') + (columnNumber - 1) % 26) + output
+            columnNumber = (columnNumber - 1) // 26
+        return output
+print(convertToTitle(int(input())))

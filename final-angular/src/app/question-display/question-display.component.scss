@@ -1,0 +1,21 @@
+.question {
+  padding: 20px;
+  font-size: 16px;
+  position: relative;
+  min-height: 350px;
+  p {
+    text-align: justify;
+    text-indent: 50px;
+  }
+  button {
+    width: 50px;
+    height: 30px;
+    left: 40%;
+    position: absolute;
+    bottom: 10px;
+  }
+
+  h4 {
+    margin-top: 10px;
+  }
+}

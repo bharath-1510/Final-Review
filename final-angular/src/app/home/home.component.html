@@ -1,4 +1,8 @@
-<h1>
-  Welcome <br /><br />
-  to<br /><br />Codelyser <br /><br />Question
-</h1>
+<section class="home-section">
+  <mat-card *ngFor="let dis of display">
+    <mat-icon>{{ dis.icon }}</mat-icon>
+    <button mat-button routerLink="{{ dis.navigate }}">
+      {{ dis.content }}
+    </button>
+  </mat-card>
+</section>

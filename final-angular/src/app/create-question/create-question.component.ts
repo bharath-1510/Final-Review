@@ -22,14 +22,19 @@ export class CreateQuestionComponent implements OnInit {
   weightage: number = 0;
   compilationTimeout: number = 0;
   templates: Template[] = [];
-  template: { [key: string]: string } = {};
   testCaseCount: number = 0;
   hideField: boolean = false;
+  template: { [key: string]: string } = {};
+  displayTextArea: { [key: string]: boolean } = {};
   testCases: TestCase[] = [];
   title: string = '';
+  types: string[] = Object.keys(languages);
+  type: string = '';
   subscription!: Subscription;
+  languages: string[] = [];
+  testcaseCount: number = 0;
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription) this.subscription.unsubscribe();
   }
   ngOnInit(): void {}
   constructor(
@@ -37,62 +42,107 @@ export class CreateQuestionComponent implements OnInit {
     private router: Router,
     private _snackBar: MatSnackBar
   ) {}
-  languages = languages;
-  testcaseCount: number = 0;
-  disableButton = false;
-  displayTextArea: { [key: string]: boolean } = {};
   onSelect(language: string) {
-    this.template[language] = language + ' Code';
-    this.displayTextArea[language] = !this.displayTextArea[language];
+    if (this.type == 'Coding') {
+      this.template[language] = language + ' Code';
+      this.displayTextArea[language] = !this.displayTextArea[language];
+    } else {
+      this.template[language + ' DDL'] = language + ' DDL Query';
+      this.displayTextArea[language + ' DDL'] =
+        !this.displayTextArea[language + ' DDL'];
+      this.template[language + ' Output'] = language + ' Output Query';
+      this.displayTextArea[language + ' Output'] =
+        !this.displayTextArea[language + ' Output'];
+    }
   }
   onSubmit() {
-    let selectedLanguages: string[] = Object.keys(this.template);
-    for (let index = 0; index < selectedLanguages.length; index++) {
-      if (
-        this.template[selectedLanguages[index]] !=
-        selectedLanguages[index] + ' Code'
-      ) {
-        this.templates.push({
-          code: this.template[selectedLanguages[index]],
-          language: selectedLanguages[index],
-        } as Template);
+    if (this.type == 'Coding') {
+      let selectedLanguages: string[] = Object.keys(this.template);
+      for (let index = 0; index < selectedLanguages.length; index++) {
+        if (
+          this.template[selectedLanguages[index]] !=
+          selectedLanguages[index] + ' Code'
+        ) {
+          this.templates.push({
+            code: this.template[selectedLanguages[index]],
+            language: selectedLanguages[index],
+          } as Template);
+        }
       }
+      if (
+        this.title.trim() == '' ||
+        this.description.trim() == '' ||
+        this.weightage == 0
+      ) {
+        this.openSnackBar('Enter The Valid Data ❌');
+        return;
+      }
+      if (this.testCases.length == 0) {
+        this.openSnackBar('Atleast One TestCase Needed ❌');
+        return;
+      }
+      if (this.templates.length == 0) {
+        this.openSnackBar('Atleast One Template Needed ❌');
+        return;
+      }
+      let question: Question = {
+        title: this.title,
+        description: this.description,
+        weightage: this.weightage,
+        type: this.type,
+        compilationTimeout: this.compilationTimeout,
+        templates: this.templates,
+        testcases: this.testCases,
+      };
+      this.subscription = this.service.saveQuestion(question).subscribe({
+        next: (data) => {
+          this.openSnackBar(data['result'] + ' ✅');
+          this.router.navigate(['/view-question']);
+        },
+        error: (error) => {
+          if (error['status'] === 400)
+            this.openSnackBar(error['error'] + ' ❌');
+          else this.openSnackBar('Server not responding 😵');
+        },
+      });
+    } else {
+      let query: string = '';
+      let commands: string = '';
+      let mySql = Object.keys(this.template);
+
+      query = this.template[mySql[0]];
+      commands = this.template[mySql[1]];
+      if (
+        this.title.trim() == '' ||
+        this.description.trim() == '' ||
+        this.weightage == 0
+      ) {
+        this.openSnackBar('Enter The Valid Data ❌');
+        return;
+      }
+
+      let question: Question = {
+        title: this.title,
+        description: this.description,
+        weightage: this.weightage,
+        type: this.type,
+        compilationTimeout: this.compilationTimeout,
+        query: query,
+        commands: commands,
+      };
+
+      this.subscription = this.service.saveQuestion(question).subscribe({
+        next: (data) => {
+          this.openSnackBar(data['result'] + ' ✅');
+          this.router.navigate(['/view-question']);
+        },
+        error: (error) => {
+          if (error['status'] === 400)
+            this.openSnackBar(error['error'] + ' ❌');
+          else this.openSnackBar('Server not responding 😵');
+        },
+      });
     }
-    if (
-      this.title.trim() == '' &&
-      this.description.trim() == '' &&
-      this.weightage == 0 &&
-      this.compilationTimeout == 0
-    ) {
-      this.openSnackBar('Enter The Valid Data ❌');
-      return;
-    }
-    if (this.testCases.length == 0) {
-      this.openSnackBar('Atleast One TestCase Needed ❌');
-      return;
-    }
-    if (this.templates.length == 0) {
-      this.openSnackBar('Atleast One Template Needed ❌');
-      return;
-    }
-    let question: Question = {
-      title: this.title,
-      description: this.description,
-      weightage: this.weightage,
-      compilationTimeout: this.compilationTimeout,
-      templates: this.templates,
-      testcases: this.testCases,
-    };
-    this.subscription = this.service.saveQuestion(question).subscribe({
-      next: (data) => {
-        this.openSnackBar(data['result'] + ' ✅');
-        this.router.navigate(['/view-question']);
-      },
-      error: (error) => {
-        if (error['status'] === 400) this.openSnackBar(error['error'] + ' ❌');
-        else this.openSnackBar('Server not responding 😵');
-      },
-    });
   }
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
@@ -100,7 +150,7 @@ export class CreateQuestionComponent implements OnInit {
     this._snackBar.open(message, 'Close', {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
-      duration: 5000,
+      duration: 3000,
     });
   }
   generateTestCases() {
@@ -109,5 +159,12 @@ export class CreateQuestionComponent implements OnInit {
       this.testCases.push({ input: '', output: '' });
     }
     this.hideField = true;
+  }
+  onChange() {
+    this.template = {};
+    this.compilationTimeout = 0;
+
+    this.displayTextArea = {};
+    this.languages = languages[this.type];
   }
 }
