@@ -38,11 +38,12 @@ export class AssignQuestionComponent {
           if (data.length != 0) {
             this.questions = data;
             this.displayQuestions = this.questions.map(
-              ({ id, weightage, description, title }) => ({
+              ({ id, weightage, description, title, type }) => ({
                 id,
                 weightage,
                 description,
                 title,
+                type,
               })
             );
             this.openSnackBar('Question Shown ✅');
@@ -73,6 +74,28 @@ export class AssignQuestionComponent {
         this.displayQuestions = this.displayQuestions.filter(
           (x) => x != question
         );
+        this.displayQuestions = this.displayQuestions.sort((a, b) => {
+          if (a.id !== undefined && b.id !== undefined) {
+            return a.id - b.id;
+          } else if (a.id !== undefined) {
+            return -1;
+          } else if (b.id !== undefined) {
+            return 1;
+          } else {
+            return 0;
+          }
+        });
+        this.selectedQuestions = this.selectedQuestions.sort((a, b) => {
+          if (a.id !== undefined && b.id !== undefined) {
+            return a.id - b.id;
+          } else if (a.id !== undefined) {
+            return -1;
+          } else if (b.id !== undefined) {
+            return 1;
+          } else {
+            return 0;
+          }
+        });
       }
     }
   }
@@ -87,6 +110,28 @@ export class AssignQuestionComponent {
         this.selectedQuestions = this.selectedQuestions.filter(
           (x) => x != question
         );
+        this.displayQuestions = this.displayQuestions.sort((a, b) => {
+          if (a.id !== undefined && b.id !== undefined) {
+            return a.id - b.id;
+          } else if (a.id !== undefined) {
+            return -1;
+          } else if (b.id !== undefined) {
+            return 1;
+          } else {
+            return 0;
+          }
+        });
+        this.selectedQuestions = this.selectedQuestions.sort((a, b) => {
+          if (a.id !== undefined && b.id !== undefined) {
+            return a.id - b.id;
+          } else if (a.id !== undefined) {
+            return -1;
+          } else if (b.id !== undefined) {
+            return 1;
+          } else {
+            return 0;
+          }
+        });
       }
     }
   }

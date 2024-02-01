@@ -13,15 +13,17 @@
                   <tr>
                     <th>ID</th>
                     <th>Weightage</th>
+                    <th>Type</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr
                     *ngFor="let question of displayQuestions"
-                    matTooltip="{{ question.title }}"
+                    matTooltip="{{ question.title }} "
                   >
                     <td>{{ question.id }}</td>
                     <td>{{ question.weightage }}</td>
+                    <td>{{ question.type?.slice(0, 1) }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -35,15 +37,17 @@
                   <tr>
                     <th>ID</th>
                     <th>Weightage</th>
+                    <th>Type</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr
                     *ngFor="let question of selectedQuestions"
-                    matTooltip="{{ question.title }}"
+                    matTooltip="{{ question.title }} "
                   >
                     <td>{{ question.id }}</td>
                     <td>{{ question.weightage }}</td>
+                    <td>{{ question.type?.slice(0, 1) }}</td>
                   </tr>
                 </tbody>
               </table>

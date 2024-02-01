@@ -1,0 +1,33 @@
+Description :
+	Query the average population for all cities in CITY, rounded down to the nearest integer.
+	City Table : id int, name varchar, countrycode varchar, district varchar, population number
+	
+Title :
+	Average Population
+
+DDL
+CREATE TABLE City (  id INT PRIMARY KEY,  name VARCHAR(255),  countrycode VARCHAR(3),  district VARCHAR(255),  population INT);
+INSERT INTO City (id, name, countrycode, district, population) VALUES (1, 'New York', 'USA', 'New York', 8419600);
+INSERT INTO City (id, name, countrycode, district, population) VALUES (2, 'Tokyo', 'JPN', 'Tokyo', 13929286);
+INSERT INTO City (id, name, countrycode, district, population) VALUES (3, 'London', 'GBR', 'London', 8173900);
+INSERT INTO City (id, name, countrycode, district, population) VALUES (4, 'Mumbai', 'IND', 'Maharashtra', 12442373);
+INSERT INTO City (id, name, countrycode, district, population) VALUES (5, 'Beijing', 'CHN', 'Beijing', 21516000);
+INSERT INTO City (id, name, countrycode, district, population) VALUES (6, 'Paris', 'FRA', 'Île-de-France', 2273305);
+INSERT INTO City (id, name, countrycode, district, population) VALUES (7, 'Los Angeles', 'USA', 'California', 3999759);
+INSERT INTO City (id, name, countrycode, district, population) VALUES (8, 'Cairo', 'EGY', 'Cairo', 7734602);
+INSERT INTO City (id, name, countrycode, district, population) VALUES (9, 'Moscow', 'RUS', 'Moscow', 12197596);
+INSERT INTO City (id, name, countrycode, district, population) VALUES (10, 'Sydney', 'AUS', 'New South Wales', 5312163);
+INSERT INTO City (id, name, countrycode, district, population) VALUES (11, 'Shanghai', 'CHN', 'Shanghai', 24256800);
+INSERT INTO City (id, name, countrycode, district, population) VALUES (12, 'Berlin', 'DEU', 'Berlin', 3562166);
+INSERT INTO City (id, name, countrycode, district, population) VALUES (13, 'Rome', 'ITA', 'Lazio', 2870500);
+INSERT INTO City (id, name, countrycode, district, population) VALUES (14, 'Toronto', 'CAN', 'Ontario', 2731571);
+INSERT INTO City (id, name, countrycode, district, population) VALUES (15, 'Mexico City', 'MEX', 'Ciudad de México', 8851080);
+INSERT INTO City (id, name, countrycode, district, population) VALUES (16, 'Istanbul', 'TUR', 'Istanbul', 15029231);
+INSERT INTO City (id, name, countrycode, district, population) VALUES (17, 'Rio de Janeiro', 'BRA', 'Rio de Janeiro', 6320446);
+INSERT INTO City (id, name, countrycode, district, population) VALUES (18, 'Delhi', 'IND', 'Delhi', 16787941);
+INSERT INTO City (id, name, countrycode, district, population) VALUES (19, 'Seoul', 'KOR', 'Seoul', 9720846);
+INSERT INTO City (id, name, countrycode, district, population) VALUES (20, 'Buenos Aires', 'ARG', 'Buenos Aires', 3054300);
+
+Output:
+select round(avg(population)) from city ;
+	

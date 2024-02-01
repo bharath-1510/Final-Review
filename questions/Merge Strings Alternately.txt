@@ -8,7 +8,7 @@ template : Java, CPP
 
 class Solution {
     public static String mergeAlternately(String word1, String word2) {
-        
+        //Write Code here
     }
 	public static void main(String ar[])
 	{
@@ -21,7 +21,7 @@ class Solution {
 #include <iostream>
 using namespace std;
 string mergeAlternately(string word1, string word2) {
-        
+    //Write Code here
 }
 int main(){
 	string word1,word2;
