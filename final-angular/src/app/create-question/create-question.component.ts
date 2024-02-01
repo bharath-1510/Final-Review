@@ -126,7 +126,7 @@ export class CreateQuestionComponent implements OnInit {
         description: this.description,
         weightage: this.weightage,
         type: this.type,
-        compilationTimeout: this.compilationTimeout,
+        compilationTimeout: 0,
         query: query,
         commands: commands,
       };
@@ -162,7 +162,7 @@ export class CreateQuestionComponent implements OnInit {
   }
   onChange() {
     this.template = {};
-    this.compilationTimeout = 0;
+    // this.compilationTimeout = 0;
 
     this.displayTextArea = {};
     this.languages = languages[this.type];
