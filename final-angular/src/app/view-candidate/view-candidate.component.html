@@ -5,7 +5,7 @@
       <div class="icon">🚫</div>
     </div>
   </div>
-  <h2>Candidate List</h2>
+  <h2 *ngIf="candidates.length != 0">Candidate List</h2>
 
   <div class="table-container" *ngIf="candidates.length != 0">
     <table>
