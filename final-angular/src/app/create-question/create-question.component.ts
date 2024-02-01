@@ -110,8 +110,8 @@ export class CreateQuestionComponent implements OnInit {
       let commands: string = '';
       let mySql = Object.keys(this.template);
 
-      query = this.template[mySql[0]];
-      commands = this.template[mySql[1]];
+      query = this.template[mySql[1]];
+      commands = this.template[mySql[0]];
       if (
         this.title.trim() == '' ||
         this.description.trim() == '' ||
