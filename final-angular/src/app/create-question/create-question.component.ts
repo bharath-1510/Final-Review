@@ -110,8 +110,8 @@ export class CreateQuestionComponent implements OnInit {
       let commands: string = '';
       let mySql = Object.keys(this.template);
 
-      query = this.template[mySql[0]];
-      commands = this.template[mySql[1]];
+      query = this.template[mySql[1]];
+      commands = this.template[mySql[0]];
       if (
         this.title.trim() == '' ||
         this.description.trim() == '' ||
@@ -126,7 +126,7 @@ export class CreateQuestionComponent implements OnInit {
         description: this.description,
         weightage: this.weightage,
         type: this.type,
-        compilationTimeout: this.compilationTimeout,
+        compilationTimeout: 0,
         query: query,
         commands: commands,
       };
@@ -162,7 +162,7 @@ export class CreateQuestionComponent implements OnInit {
   }
   onChange() {
     this.template = {};
-    this.compilationTimeout = 0;
+    // this.compilationTimeout = 0;
 
     this.displayTextArea = {};
     this.languages = languages[this.type];

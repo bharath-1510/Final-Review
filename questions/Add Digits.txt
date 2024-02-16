@@ -63,7 +63,7 @@ testcase :
 
 7.
 123987
-2
+3
 
 
 solution 

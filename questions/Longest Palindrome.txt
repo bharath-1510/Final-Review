@@ -74,3 +74,17 @@ class Solution {
 		System.out.println(longestPalindrome(ar[0]));
 	}
 }
+
+
+int oddCount = 0;
+        unordered_map<char, int> ump;
+        for(char ch : s) {
+            ump[ch]++;
+            if (ump[ch] % 2 == 1)
+                oddCount++;
+            else    
+                oddCount--;
+        }
+        if (oddCount > 1)
+            return s.length() - oddCount + 1;
+        return s.length();
